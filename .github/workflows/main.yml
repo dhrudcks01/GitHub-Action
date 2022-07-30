@@ -1,6 +1,7 @@
 name: 'My First GitHub Actions Workflow'
 
 on: push
+# on은 깃허브 액션이 작동하게 하는 trigger 같은 것
 
 env:
   WORKFLOW_LEVEL: 'This value comes fom the workflow level'
@@ -9,60 +10,22 @@ jobs:
   fist-job:
     name: 'first Job'
     runs-on: 'ubuntu-latest'
+    # ['windows-latest', 'ubuntu-latest','macos-latest'] # 어떤 운영체제에서 실행시킬 것인지 설정!! ㅣ건 3개의 OSd에서 동시에 실행 가능!
 
-    env:
-      JOB_LEVEL_1: 'This value comes from the job 1'
     steps:
-      - name: 'Say Hello World from step 1'
+      - name: 'Set environment variable 1'
         shell: bash
-        env:
-          STEP_LEVEL_1: 'This value comes fom the step 1'
         run: |
-          echo "Hello World from Step 1"
-          echo "$WORKFLOW_LEVEL"
-          echo "$JOB_LEVEL_1"
-          echo "$JOB_LEVEL_2"
-          echo "$STEP_LEVEL_1"
-          echo "$STEP_LEVEL_2"
+          echo "STEP_1 ='This value comes from the step 1'" >> $GITHUB_ENV
 
-      - name: 'Say Lorem Ipsum on step 2'
+      - name: 'Set environment variable 2'
         shell: pwsh
-        env:
-          STEP_LEVEL_2: 'This value comes from the step 2'
         run: |
-          echo "Lorem Ipsum from step 2"
-          echo "$env:WORKFLOW_LEVEL"
-          echo "$env:JOB_LEVEL_1"
-          echo "$env:JOB_LEVEL_2"
-          echo "$env:STEP_LEVEL_1"
-          echo "$env:STEP_LEVEL_2"
+          echo "STEP_2 ='This value comes from the step 2'" | Out-File -FilePath $env:GITHUB_ENV -Encoing utf-8 -Append
 
-  second-job:
-    name: 'Second Job'
-    runs-on: 'ubuntu-latest'
-    env:
-      JOB_LEVEL_2: 'This value comes from the job 2'
-    steps:
-      - name: 'Say Hello World on step 1'
+      - name: 'Get environment variables'
         shell: bash
-        env:
-          STEP_LEVEL_1: 'This value comes from the step 1'
         run: |
-          echo "Hello World from Step 1"
-          echo "$WORKFLOW_LEVEL"
-          echo "$JOB_LEVEL_1"
-          echo "$JOB_LEVEL_2"
-          echo "$STEP_LEVEL_1"
-          echo "$STEP_LEVEL_2"
-
-      - name: 'Say Lorem Ipsum on step 2'
-        shell: pwsh
-        env:
-          STEP_LEVEL_2: 'This value comes from the step 2'
-        run: |
-          echo "Lorem Ipsum on step 2"
-          echo "$env:WORKFLOW_LEVEL"
-          echo "$env:JOB_LEVEL_1"
-          echo "$env:JOB_LEVEL_2"
-          echo "$env:STEP_LEVEL_1"
-          echo "$env:STEP_LEVEL_2"
+          echo "WORKFLOW: ${{ env.WORKFLOW_LEVEL }}"
+          echo "STEP 1: ${{ env.STEP_1 }}"
+          echo "STEP 2: ${{ env.STEP_2 }}"
