@@ -36,7 +36,7 @@ jobs:
           echo "SECRET 1: ${{ secrets.SECRET_1 }}"
 
           if ("${{ secrets.SECRET_1 }}" -eq "Hello World") {
-           echo "TRUE"
+            echo "TRUE"
           } else {
-          echo "FALSE"
+            echo "FALSE"
           }
