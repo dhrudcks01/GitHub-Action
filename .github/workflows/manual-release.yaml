@@ -18,7 +18,6 @@ jobs:
     uses: ./.github/workflows/cd.yaml
     needs: call_build
     with:
-      automatic_release_tag: 'latest'
       title: ${{ github.event.inputs.title }}
       artifact_name: apiapp
     secrets: inherit
