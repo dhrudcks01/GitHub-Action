@@ -26,15 +26,27 @@ jobs:
         shell: bash
         run: |
           echo "DEVELOPERS"
-  deploy-to-prod-job:
-    name: 'Deployment Job to PROD'
+  deploy-to-qa1-job:
+    name: 'Deployment Job to QA1'
     needs:
-      - build-job
+      - deploy-to-dev-job
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: 'Say PROD'
+      - name: 'Say DEV'
         shell: bash
         run: |
-          echo "PRODUCTION"
+          echo "DEVELOPERS"
+  deploy-to-qa2-job:
+    name: 'Deployment Job to QA2'
+    needs:
+      - deploy-to-dev-job
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Say DEV'
+        shell: bash
+        run: |
+          echo "DEVELOPERS"
