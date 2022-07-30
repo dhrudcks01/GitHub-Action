@@ -5,6 +5,7 @@ on: push
 jobs:
   fist-job:
     name: 'first Job'
+    if: github.event_name == 'pull_request'
     strategy:
       matrix:
         os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
