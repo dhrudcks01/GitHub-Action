@@ -15,12 +15,12 @@ jobs:
     runs-on: 'ubuntu-latest'
 
   call_build:
-    uses: ./.github/workflows/ci.yaml
+    uses: /github/workflows/ci.yaml
     with:
       artifact_name: apiapp
 
   call_release_dev:
-    uses: ./.github/worlfows/cd.yaml
+    uses: /github/worlfows/cd.yaml
     needs: call_build
     with:
       title: latest
