@@ -3,18 +3,17 @@ name: 'My First GitHub Actions Workflow'
 on: push
 
 jobs:
-  first-job:
-    name: 'First Job'
-
-    runs-on: ubuntu-latest
+  fist-job:
+    name: 'first Job'
+    runs-on: 'ubuntu-latest'
 
     steps:
       - name: 'Say Hello World on step 1'
         shell: bash
         run: |
-          ehco "Hello World from Step 1"
+          echo "Hello World from Step 1"
 
       - name: 'Say Lorem Ipsum on step 2'
         shell: pwsh
         run: |
-          ehco "Lorem Ipsum from Step 21"
+          echo "Lorem Ipsum on step 2"
