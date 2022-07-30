@@ -63,6 +63,6 @@ jobs:
           echo "Lorem Ipsum on step 2"
           echo "$env:WORKFLOW_LEVEL"
           echo "$env:JOB_LEVEL_1"
-          echo "$env: JOB_LEVEL_2"
+          echo "$env:JOB_LEVEL_2"
           echo "$env:STEP_LEVEL_1"
           echo "$env:STEP_LEVEL_2"
