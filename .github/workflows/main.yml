@@ -2,18 +2,67 @@ name: 'My First GitHub Actions Workflow'
 
 on: push
 
+env:
+  WORKFLOW_LEVEL: 'This value comes fom the workflow level'
+
 jobs:
   fist-job:
     name: 'first Job'
     runs-on: 'ubuntu-latest'
 
+    env:
+      JOB_LEVEL_1: 'This value comes from the job 1'
     steps:
-      - name: 'Say Hello World on step 1'
+      - name: 'Say Hello World from step 1'
         shell: bash
+        env:
+          STEP_LEVEL_1: 'This value comes fom the step 1'
         run: |
           echo "Hello World from Step 1"
+          echo "$WORKFLOW_LEVEL"
+          echo "$JOB_LEVEL_1"
+          echo "$JOB_LEVEL_2"
+          echo "$STEP_LEVEL_1"
+          echo "$STEP_LEVEL_2"
 
       - name: 'Say Lorem Ipsum on step 2'
         shell: pwsh
+        env:
+          STEP_LEVEL_2: 'This value comes from the step 2'
+        run: |
+          echo "Lorem Ipsum from step 2"
+          echo "$env:WORKFLOW_LEVEL"
+          echo "$env:JOB_LEVEL_1"
+          echo "$env:JOB_LEVEL_2"
+          echo "$env:STEP_LEVEL_1"
+          echo "$env:STEP_LEVEL_2"
+
+  second-job:
+    name: 'Second Job'
+    runs-on: 'ubuntu-latest'
+    env:
+      JOB_LEVEL_2: 'This value comes from the job 2'
+    steps:
+      - name: 'Say Hello World on step 1'
+        shell: bash
+        env:
+          STEP_LEVEL_1: 'This value comes from the step 1'
+        run: |
+          echo "Hello World from Step 1"
+          echo "$WORKFLOW_LEVEL"
+          echo "$JOB_LEVEL_1"
+          echo "$JOB_LEVEL_2"
+          echo "$STEP_LEVEL_1"
+          echo "$STEP_LEVEL_2"
+
+      - name: 'Say Lorem Ipsum on step 2'
+        shell: pwsh
+        env:
+          STEP_LEVEL_2: 'This value comes from the step 2'
         run: |
           echo "Lorem Ipsum on step 2"
+          echo "$env:WORKFLOW_LEVEL"
+          echo "$env:JOB_LEVEL_1"
+          echo "$env: JOB_LEVEL_2"
+          echo "$env:STEP_LEVEL_1"
+          echo "$env:STEP_LEVEL_2"
