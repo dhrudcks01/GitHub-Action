@@ -22,4 +22,5 @@ jobs:
     with:
       title: latest
       artifact_name: apiapp
+      automatic_release_tag: latest
     secrets: inherit
