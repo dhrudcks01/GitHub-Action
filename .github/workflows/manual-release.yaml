@@ -20,5 +20,5 @@ jobs:
     with:
       title: ${{ github.event.inputs.title }}
       artifact_name: apiapp
-      automatic_release_tag: latest
+      automatic_release_tag: 'latest'
     secrets: inherit
