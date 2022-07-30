@@ -17,4 +17,4 @@ jobs:
       - name: 'Say Lorem Ipsum on step 2'
         shell: pwsh
         run: |
-          ehco "Lorem Ipsum from Step 2"
+          ehco "Lorem Ipsum from Step 21"
